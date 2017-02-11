@@ -1,9 +1,17 @@
-export default (state = {name: "HOME", inputMode: 'PDB_ID'}, action) => {
+const defaultState = {
+  name: "HOME",
+  inputMode: 'PDB_ID',
+  computationalMode: 'HOME'
+};
+
+export default (state = defaultState, action) => {
   switch (action.type) {
     case 'SWITCH_TAB':
-      return {name: action.tab, inputMode: state.inputMode};
+      return (Object.assign({}, state, {name: action.name}));
     case 'SET_INPUT_MODE':
-      return {name: state.name, inputMode: action.inputMode};
+      return (Object.assign({}, state, {inputMode: action.inputMode}));
+    case 'SET_COMPUTATIONAL_MODE':
+      return (Object.assign({}, state, {name: action.name, computationalMode: action.computationalMode}));
     default:
       return state;
   }

@@ -8,7 +8,7 @@ export default connect(
   state => state.tabs,
   dispatch => ({
     switchTab: (tab) => {
-      dispatch({type: 'SWITCH_TAB', tab: tab})
+      dispatch({type: 'SET_COMPUTATIONAL_MODE', name: tab, computationalMode: tab})
     }
   })
 )(MainNav)

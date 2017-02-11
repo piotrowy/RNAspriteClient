@@ -3,7 +3,7 @@ import React from 'react';
 class InputMode extends React.Component {
   setInputMode(item, event) {
     if (item !== this.props.name) {
-      this.props.setInputMode(item)
+      this.props.setInputMode(item, 'INPUT')
     }
   }
 
