@@ -19,6 +19,8 @@ export default (state = defaultState, action) => {
         default:
           return (Object.assign({}, state, {name: 'CONFIGURATION'}));
       }
+    case 'SERVER_FAULT':
+      return {name: 'ERROR'};
     default:
       return state;
   }

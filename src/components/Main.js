@@ -1,6 +1,8 @@
 import React from 'react';
 
 import Home from './Home'
+import DistancesConfiguration from '../containers/DistancesConfiguration'
+import TorsionAnglesConfiguration from '../containers/TorsionAnglesConfiguration'
 import Input from '../containers/Input'
 import InputMode from '../containers/InputMode'
 
@@ -17,8 +19,18 @@ class Main extends React.Component {
           <Input />
         );
       case 'CONFIGURATION':
+        if (this.props.computationalMode === 'DISTANCES') {
+          return (
+            <DistancesConfiguration />
+          );
+        } else {
+          return (
+            <TorsionAnglesConfiguration />
+          );
+        }
+      case 'ERROR':
         return (
-          <div>CONFIGRUATION</div>
+          <div>ERROR</div>
         );
       default:
         return (

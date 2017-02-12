@@ -7,7 +7,9 @@ class Input extends React.Component {
   }
 
   submit(event) {
-
+    const form = new FormData(event.target);
+    this.props.submitTaskForm(form);
+    event.preventDefault();
   }
 
   render() {

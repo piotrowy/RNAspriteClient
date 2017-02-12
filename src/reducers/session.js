@@ -2,13 +2,25 @@
  * Created by piotrowy on 12.02.2017.
  */
 const defaultState = {
-  key: "",
+  key: '',
+  models: [],
+  chains: [],
+  atoms: [],
+  matrix: {}
 };
 
 export default (state = defaultState, action) => {
   switch (action.type) {
     case 'SUCCESS_SUBMIT':
       return (Object.assign({}, state, {key: action.result}));
+    case 'MODELS':
+      return (Object.assign({}, state, {models: action.models}));
+    case 'CHAINS':
+      return (Object.assign({}, state, {chains: action.chains}));
+    case 'ATOMS':
+      return (Object.assign({}, state, {atoms: action.atoms}));
+    case 'SERVER_FAULT':
+      return {key: ''};
     default:
       return state;
   }
