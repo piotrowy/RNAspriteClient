@@ -19,6 +19,8 @@ export default (state = defaultState, action) => {
         default:
           return (Object.assign({}, state, {name: 'CONFIGURATION'}));
       }
+    case 'MATRIX_VIEW':
+      return (Object.assign({}, state, {name: action.type}));
     case 'SERVER_FAULT':
       return {name: 'ERROR'};
     default:

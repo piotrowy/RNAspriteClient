@@ -16,7 +16,6 @@ class DistancesConfiguration extends React.Component {
 
   sendData(event) {
     event.preventDefault();
-    // event.stopPropagation();
 
     let chain = {};
     chain[document.getElementById('chainSelect').value] = {

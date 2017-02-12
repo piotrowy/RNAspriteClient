@@ -19,6 +19,10 @@ export default (state = defaultState, action) => {
       return (Object.assign({}, state, {chains: action.chains}));
     case 'ATOMS':
       return (Object.assign({}, state, {atoms: action.atoms}));
+    case 'ANGLES':
+      return (Object.assign({}, state, {angles: action.angles}));
+    case 'MATRIX_VIEW':
+      return (Object.assign({}, state, {matrix: action.matrix}));
     case 'SERVER_FAULT':
       return {key: ''};
     default:

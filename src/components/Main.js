@@ -3,6 +3,7 @@ import React from 'react';
 import Home from './Home'
 import DistancesConfiguration from '../containers/DistancesConfiguration'
 import TorsionAnglesConfiguration from '../containers/TorsionAnglesConfiguration'
+import MatrixView from '../containers/MatrixView'
 import Input from '../containers/Input'
 import InputMode from '../containers/InputMode'
 
@@ -28,6 +29,10 @@ class Main extends React.Component {
             <TorsionAnglesConfiguration />
           );
         }
+      case 'MATRIX_VIEW':
+        return (
+          <MatrixView />
+        );
       case 'ERROR':
         return (
           <div>ERROR</div>
