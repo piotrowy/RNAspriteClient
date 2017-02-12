@@ -9,10 +9,12 @@ class InputMode extends React.Component {
 
   render() {
     return (
-      <div>
-        <button onClick={this.setInputMode.bind(this, "PDB_ID")}>Pdb Id</button>
-        <button onClick={this.setInputMode.bind(this, "FILE")}>File</button>
-      </div>
+      <main>
+        <div className="container">
+          <a className="waves-effect waves-light btn-large" onClick={this.setInputMode.bind(this, "PDB_ID")}>Pdb Id</a>
+          <a className="waves-effect waves-light btn-large" onClick={this.setInputMode.bind(this, "FILE")}>File</a>
+        </div>
+      </main>
     );
   }
 }

@@ -1,6 +1,5 @@
 import React from 'react';
-
-import {Nav, NavItem} from 'react-bootstrap';
+import {nav, Button} from 'react-materialize';
 
 class MainNav extends React.Component {
 
@@ -13,14 +12,19 @@ class MainNav extends React.Component {
 
   render() {
     return (
-      <div>
-        <Nav bsStyle="tabs" activeKey={0} className="main-nav">
-          <NavItem eventKey={0} onClick={ this.switchTab.bind(this, "HOME") }>Home</NavItem>
-          <NavItem eventKey={1} onClick={ this.switchTab.bind(this, "TORSION_ANGLES") }>Torsion angles</NavItem>
-          <NavItem eventKey={2} onClick={ this.switchTab.bind(this, "DISTANCES") }>Distances</NavItem>
-          <NavItem eventKey={3} onClick={ this.switchTab.bind(this, "BATCH_MODE") }>Batch mode</NavItem>
-        </Nav>
-      </div>
+      <header>
+        <nav className="teal">
+          <div className="nav-wrapper">
+            <a href="#" className="brand-logo logoDiv">LOGO</a>
+            <ul id="nav-mobile" className="right hide-on-med-and-down">
+              <li><a onClick={this.switchTab.bind(this, "HOME")}>Home</a></li>
+              <li><a onClick={this.switchTab.bind(this, "TORSION_ANGLES")}>Torsion angles</a></li>
+              <li><a onClick={this.switchTab.bind(this, "DISTANCES")}>Distances</a></li>
+              <li><a onClick={this.switchTab.bind(this, "BATCH_MODE")}>Batch mode</a></li>
+            </ul>
+          </div>
+        </nav>
+      </header>
     );
   }
 }

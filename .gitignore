@@ -3,3 +3,4 @@ bundle.js
 .idea
 ./idea/*
 *~
+.DS_Store

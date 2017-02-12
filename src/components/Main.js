@@ -11,6 +11,7 @@ class Main extends React.Component {
         return (
           <Home />
         );
+      case 'BATCH_MODE':
       case 'INPUT':
         return (
           <Input />
