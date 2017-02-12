@@ -7,6 +7,7 @@ import {createStore, combineReducers, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import tabs from './src/reducers/tabs';
+import session from './src/reducers/session';
 import createLogger from 'redux-logger';
 
 import './src/styles/main.scss';
@@ -14,7 +15,8 @@ import './src/styles/main.scss';
 import App from './src/components/App'
 
 const store = createStore(combineReducers ({
-  tabs
+  tabs,
+  session
 }), applyMiddleware(thunk, createLogger()));
 
 

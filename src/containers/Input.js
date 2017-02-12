@@ -5,10 +5,12 @@ export default connect(
   state => state.tabs,
   dispatch => ({
     sendData: e => {
-      fetch(`http://localhost:8080/PdbId/${e}`).then(res => res.json()).then(result => dispatch({
-        type: 'SUCCESS_SUBMIT',
-        result
-      }))
+      fetch(`http://localhost:8080/session/pdbId/${e}`).then(res => res.json()).then(result => {
+        dispatch({
+          type: 'SUCCESS_SUBMIT',
+          result
+        })
+      })
     }
   })
 )(Input);

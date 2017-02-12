@@ -12,6 +12,13 @@ export default (state = defaultState, action) => {
       return (Object.assign({}, state, {inputMode: action.inputMode}));
     case 'SET_COMPUTATIONAL_MODE':
       return (Object.assign({}, state, {name: action.name, computationalMode: action.computationalMode}));
+    case 'SUCCESS_SUBMIT':
+      switch(state.computationalMode) {
+        case 'BATCH_MODE':
+          return defaultState;
+        default:
+          return (Object.assign({}, state, {name: 'CONFIGURATION'}));
+      }
     default:
       return state;
   }

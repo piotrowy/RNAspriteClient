@@ -9,7 +9,7 @@ module.exports = {
     ]
   },
   output: {
-    path: './',
+    path: './../RNAsprite/src/main/webapp/',
     filename: 'bundle.js'
   },
   module: {

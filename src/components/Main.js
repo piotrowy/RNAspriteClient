@@ -16,6 +16,10 @@ class Main extends React.Component {
         return (
           <Input />
         );
+      case 'CONFIGURATION':
+        return (
+          <div>CONFIGRUATION</div>
+        );
       default:
         return (
           <InputMode />
