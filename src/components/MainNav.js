@@ -1,5 +1,12 @@
 import React from 'react';
-import {nav, Button} from 'react-materialize';
+import {PageHeader, Nav, NavItem} from 'react-bootstrap';
+
+const tabs = {
+  'HOME': 1,
+  'TORSION_ANGLES': 2,
+  'DISTANCES': 3,
+  'BATCH_MODE': 4,
+}
 
 class MainNav extends React.Component {
 
@@ -13,17 +20,13 @@ class MainNav extends React.Component {
   render() {
     return (
       <header>
-        <nav className="teal">
-          <div className="nav-wrapper">
-            <a href="#" className="brand-logo logoDiv">LOGO</a>
-            <ul id="nav-mobile" className="right hide-on-med-and-down">
-              <li><a onClick={this.switchTab.bind(this, "HOME")}>Home</a></li>
-              <li><a onClick={this.switchTab.bind(this, "TORSION_ANGLES")}>Torsion angles</a></li>
-              <li><a onClick={this.switchTab.bind(this, "DISTANCES")}>Distances</a></li>
-              <li><a onClick={this.switchTab.bind(this, "BATCH_MODE")}>Batch mode</a></li>
-            </ul>
-          </div>
-        </nav>
+        <PageHeader>RNAsprite</PageHeader>
+        <Nav bsStyle="tabs" activeKey={tabs[this.props.name]} className="teal">
+          <NavItem onClick={this.switchTab.bind(this, "HOME")} eventKey={1}>Home</NavItem>
+          <NavItem onClick={this.switchTab.bind(this, "TORSION_ANGLES")} eventKey={2}>Torsion angles</NavItem>
+          <NavItem onClick={this.switchTab.bind(this, "DISTANCES")} eventKey={3}>Distances</NavItem>
+          <NavItem onClick={this.switchTab.bind(this, "BATCH_MODE")} eventKey={4}>Batch mode</NavItem>
+        </Nav>
       </header>
     );
   }

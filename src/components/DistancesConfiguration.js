@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 
 class DistancesConfiguration extends React.Component {
   componentWillMount() {
@@ -68,7 +69,7 @@ class DistancesConfiguration extends React.Component {
               )
             )}
           </select>
-          <button type="submit"></button>
+          <Button type="submit">Submit</Button>
         </form>
       </main>
     );

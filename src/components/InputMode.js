@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 
 class InputMode extends React.Component {
   setInputMode(item, event) {
@@ -10,9 +11,9 @@ class InputMode extends React.Component {
   render() {
     return (
       <main>
-        <div className="container">
-          <a className="waves-effect waves-light btn-large" onClick={this.setInputMode.bind(this, "PDB_ID")}>Pdb Id</a>
-          <a className="waves-effect waves-light btn-large" onClick={this.setInputMode.bind(this, "FILE")}>File</a>
+        <div className="middle">
+          <Button onClick={this.setInputMode.bind(this, "PDB_ID")}>Pdb Id</Button>
+          <Button onClick={this.setInputMode.bind(this, "FILE")}>File</Button>
         </div>
       </main>
     );

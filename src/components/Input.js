@@ -1,4 +1,5 @@
 import React from 'react';
+import {Panel, Button} from 'react-bootstrap';
 
 class Input extends React.Component {
 
@@ -17,25 +18,25 @@ class Input extends React.Component {
       case "FILE":
         return (
           <main>
-            <div className="container">
+            <Panel className="middle">
               <form onSubmit={this.submit.bind(this)} id="fileInput">
                 <input name="file" type="file" id="script_file" required/>
-                <button className="waves-effect waves-light btn" type="submit">Submit
-                </button>
+                <Button type="submit">Submit
+                </Button>
               </form>
-            </div>
+            </Panel>
           </main>
         );
       default:
         return (
           <main>
-            <div className="container">
+            <Panel className="middle">
               <form>
-                <input id="idInput" type="text"/>
-                <button className="waves-effect waves-light btn" type="button" onClick={this.sendData.bind(this)}>Submit
-                </button>
+                <input id="idInput" type="text" required/>
+                <Button type="button" onClick={this.sendData.bind(this)}>Submit
+                </Button>
               </form>
-            </div>
+            </Panel>
           </main>
         );
     }

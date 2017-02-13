@@ -1,9 +1,5 @@
 import React from 'react';
 
-const parseDistancesLabels = (labels) => labels.map((label) => '' + label['number'] + '-' + label['originalName']);
-
-const parseDistancesData = (data) => data.reduce((a, e, y) => a.concat(e.map((b, x) => [x, data.length-y-1, parseFloat(b.replace(/,/, '.'))])), []);
-
 (function (H) {
   var Series = H.Series,
     each = H.each;
@@ -27,7 +23,7 @@ const parseDistancesData = (data) => data.reduce((a, e, y) => a.concat(e.map((b,
    * Draw the canvas image inside an SVG image
    */
   Series.prototype.canvasToSVG = function () {
-    this.image.attr({ href: this.canvas.toDataURL('image/png') });
+    this.image.attr({href: this.canvas.toDataURL('image/png')});
   };
 
   /**
@@ -69,8 +65,21 @@ const parseDistancesData = (data) => data.reduce((a, e, y) => a.concat(e.map((b,
   H.seriesTypes.heatmap.prototype.directTouch = false; // Use k-d-tree
 }(Highcharts));
 
-const createChart = (container, title, matrix) => {
-  console.log(parseDistancesData(matrix['mtxModels'][0]['mtxChains'][0]['matrices'][0]['data']));
+const parseResiduesLabels = (labels) => labels.map((label) => '' + label['number'] + '-' + label['originalName']);
+
+const parseDistancesData = (data) => data.reduce((a, e, y) => a.concat(e.map((b, x) => [data.length - y - 1, x, parseFloat(b.replace(/,/, '.'))])), []);
+
+const parseToFloats = (data) => data.map((array) => array.map((e) => parseFloat(e.replace(/,/, '.'))));
+
+const findMax = (data) => parseToFloats(data).reduce(function (max, arr) {
+    return max >= arr[0] ? max : arr[0];
+  }, -Infinity);
+
+const findMin = (data) => parseToFloats(data).reduce(function (min, arr) {
+    return min <= arr[0] ? min : arr[0];
+  }, Infinity);
+
+const createDistancesMatrixChart = (container, title, matrix) => {
   Highcharts.chart(container, {
 
     chart: {
@@ -86,17 +95,17 @@ const createChart = (container, title, matrix) => {
     },
 
     xAxis: {
-      categories: parseDistancesLabels(matrix['mtxModels'][0]['mtxChains'][0]['matrices'][0]['xlabels'])
+      categories: parseResiduesLabels(matrix['mtxModels'][0]['mtxChains'][0]['matrices'][0]['xlabels'])
     },
 
     yAxis: {
-      categories: parseDistancesLabels(matrix['mtxModels'][0]['mtxChains'][0]['matrices'][0]['ylabels']),
+      categories: parseResiduesLabels(matrix['mtxModels'][0]['mtxChains'][0]['matrices'][0]['ylabels']),
       title: null
     },
 
     colorAxis: {
       min: 0,
-      max: 100,
+      max: findMax(matrix['mtxModels'][0]['mtxChains'][0]['matrices'][0]['data']),
       minColor: '#FFFFFF',
       maxColor: Highcharts.getOptions().colors[0]
     },
@@ -112,7 +121,79 @@ const createChart = (container, title, matrix) => {
 
     tooltip: {
       formatter: function () {
-        return '<b>' + this.series.xAxis.categories[this.point.x] + '</b> residue No 1 <br><b>' + this.series.yAxis.categories[this.point.y] + '</b> residue No 2 <br><b>' + this.point.value + '</b> distance';
+        return '<b>' + this.series.xAxis.categories[this.point.x] + '</b> residue No 1 <br><b>'
+          + this.series.yAxis.categories[this.point.y] + '</b> residue No 2 <br><b>'
+          + this.point.value + '</b> distance';
+      }
+    },
+
+    turboThreshold: 0,
+
+    series: [{
+      name: 'Sales per employee',
+      borderWidth: 1,
+      data: parseDistancesData(matrix['mtxModels'][0]['mtxChains'][0]['matrices'][0]['data']),
+      dataLabels: {
+        enabled: false,
+        color: '#000000'
+      }
+    }]
+
+  });
+};
+
+
+const createTorsionAnglesMatrixChart = (container, title, matrix) => {
+  console.log(matrix['mtxModels'][0]['mtxChains'][0]['matrices'][0]['xlabels']);
+  console.log(parseResiduesLabels(matrix['mtxModels'][0]['mtxChains'][0]['matrices'][0]['ylabels']));
+  console.log(parseDistancesData(matrix['mtxModels'][0]['mtxChains'][0]['matrices'][0]['data']));
+  console.log(findMax(matrix['mtxModels'][0]['mtxChains'][0]['matrices'][0]['data']));
+  console.log(findMin(matrix['mtxModels'][0]['mtxChains'][0]['matrices'][0]['data']));
+  Highcharts.chart(container, {
+    chart: {
+      type: 'heatmap',
+      marginTop: 40,
+      marginBottom: 80,
+      plotBorderWidth: 1
+    },
+
+
+    title: {
+      text: title
+    },
+
+    xAxis: {
+      categories: parseResiduesLabels(matrix['mtxModels'][0]['mtxChains'][0]['matrices'][0]['ylabels'])
+    },
+
+    yAxis: {
+      categories: matrix['mtxModels'][0]['mtxChains'][0]['matrices'][0]['xlabels'],
+      min: 0,
+      max: matrix['mtxModels'][0]['mtxChains'][0]['matrices'][0]['xlabels'].length-1,
+      title: null
+    },
+
+    colorAxis: {
+      min: -180,
+      max: 180,
+      minColor: '#FFFFFF',
+      maxColor: Highcharts.getOptions().colors[0]
+    },
+
+    legend: {
+      align: 'right',
+      layout: 'vertical',
+      margin: 0,
+      verticalAlign: 'top',
+      y: 25,
+      symbolHeight: 280
+    },
+
+    tooltip: {
+      formatter: function () {
+        return '<b>' + this.series.xAxis.categories[this.point.x] + '</b> residue No 1 <br><b>'
+          + this.series.yAxis.categories[this.point.y] + '</b> angle <br><b>'
+          + this.point.value + '</b> degrees';
       }
     },
 
@@ -133,5 +214,6 @@ const createChart = (container, title, matrix) => {
 
 
 export default {
-  create: createChart
+  createDistancesMatrixChart,
+  createTorsionAnglesMatrixChart
 };

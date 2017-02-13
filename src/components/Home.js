@@ -1,12 +1,13 @@
 import React from 'react';
+import {Panel} from 'react-bootstrap';
 
 class Home extends React.Component {
   render() {
     return (
       <main>
-        <div className="container">
+        <Panel className="middle">
           <h3>RNAsprite</h3>
-        </div>
+        </Panel>
       </main>
     );
   }
