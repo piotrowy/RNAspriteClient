@@ -99,6 +99,8 @@ const createDistancesMatrixChart = (container, title, matrix) => {
     },
 
     yAxis: {
+      min: 0,
+      max: matrix['mtxModels'][0]['mtxChains'][0]['matrices'][0]['ylabels'].length-1,
       categories: parseResiduesLabels(matrix['mtxModels'][0]['mtxChains'][0]['matrices'][0]['ylabels']),
       title: null
     },
