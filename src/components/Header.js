@@ -7,25 +7,16 @@ const MyHeader = styled.div`
   display: flex;
   background-color: #00695c;
   padding: 1vh;
-  height: 14vh;
+  height: 12vh;
   color: white;
 `;
-
-const Content = styled.h1`
-  font-size: 6vh;
-  margin: 0;
-`;
-
-const a = {
-  color: 'white'
-};
 
 class Header extends React.Component {
   render() {
     return (
       <header>
         <MyHeader>
-          <Content>RNAsprite - a tool to calculate RNA structural data</Content>
+          <h4>RNAsprite - a tool to calculate RNA structural data</h4>
         </MyHeader>
       </header>
     );

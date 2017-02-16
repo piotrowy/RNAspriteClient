@@ -17,23 +17,23 @@ class Input extends React.Component {
     switch (this.props.inputMode) {
       case "FILE":
         return (
-          <main>
+          <div>
             <form onSubmit={this.submit.bind(this)} id="fileInput">
               <input name="file" type="file" id="script_file" required/>
               <button type="submit">Submit
               </button>
             </form>
-          </main>
+          </div>
         );
       default:
         return (
-          <main>
+          <div>
             <form>
               <input id="idInput" type="text" required/>
               <button type="button" onClick={this.sendData.bind(this)}>Submit
               </button>
             </form>
-          </main>
+          </div>
         );
     }
   }

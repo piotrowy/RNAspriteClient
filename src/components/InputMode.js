@@ -37,7 +37,7 @@ class InputMode extends React.Component {
 
   render() {
     return (
-      <main>
+      <div>
         <ButtonWrapper>
           <Centered>
             <MyButton onClick={this.setInputMode.bind(this, "PDB_ID")}>
@@ -48,7 +48,7 @@ class InputMode extends React.Component {
             </MyButton>
           </Centered>
         </ButtonWrapper>
-      </main>
+      </div>
     );
   }
 }

@@ -15,14 +15,14 @@ class MatrixView extends React.Component {
 
   render() {
     return (
-      <main>
+      <div>
         <form onSubmit={this.send.bind(this)}>
           <input id="email" type="text" required/>
           <Button type="submit">Send</Button>
         </form>
         <Button onClick={this.download.bind(this)}>Download</Button>
         <div id="heatMap"></div>
-      </main>
+      </div>
     );
   }
 

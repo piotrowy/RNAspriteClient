@@ -51,7 +51,7 @@ class TorsionAnglesConfiguration extends React.Component {
 
   render() {
     return (
-      <main>
+      <div>
         <form onSubmit={this.sendData.bind(this)}>
           <select defaultValue="" id="modelSelect" onChange={this.getChains.bind(this)}>
             <option value=""></option>
@@ -75,7 +75,7 @@ class TorsionAnglesConfiguration extends React.Component {
           </div>
           <Button type="submit">Submit</Button>
         </form>
-      </main>
+      </div>
     );
   }
 }

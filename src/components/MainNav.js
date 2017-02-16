@@ -7,15 +7,6 @@ const Navigation = styled.div`
   vertical-align: middle;
 `;
 
-const NavItem = styled.li`
-    text-align: center;
-    display: inline;
-    height: 6vh;
-    width: auto;
-    padding: 1vh;
-    color: white;
-`;
-
 const tabs = {
   'HOME': 1,
   'TORSION_ANGLES': 2,
@@ -23,14 +14,9 @@ const tabs = {
   'BATCH_MODE': 4,
 };
 
-const List = styled.ul`
-  margin: 0;
-`;
-
 class MainNav extends React.Component {
 
   switchTab(item, event) {
-    console.log(this.props)
     if (item !== this.props.name) {
       this.props.switchTab(item)
     }
@@ -38,22 +24,24 @@ class MainNav extends React.Component {
 
   render() {
     return (
-      <Navigation>
-        <List activeKey={tabs[this.props.name]}>
-          <NavItem onClick={this.switchTab.bind(this, "HOME")} eventKey={1}>
-            <a>Home</a>
-          </NavItem>
-          <NavItem onClick={this.switchTab.bind(this, "TORSION_ANGLES")} eventKey={2}>
-            <a href="#">Torsion angles</a>
-          </NavItem>
-          <NavItem onClick={this.switchTab.bind(this, "DISTANCES")} eventKey={3}>
-            <a href="#">Distances</a>
-          </NavItem>
-          <NavItem onClick={this.switchTab.bind(this, "BATCH_MODE")} eventKey={4}>
-            <a href="#">Batch mode</a>
-          </NavItem>
-        </List>
-      </Navigation>
+        <nav>
+          <Navigation className="nav-wrapper">
+            <ul id="nav-mobile" className="left hide-on-med-and-down">
+              <li>
+                <a onClick={this.switchTab.bind(this, "HOME")} value="HOME">Home</a>
+              </li>
+              <li>
+                <a onClick={this.switchTab.bind(this, "TORSION_ANGLES")} value="TORSION_ANGLES">Torsion angles</a>
+              </li>
+              <li>
+                <a onClick={this.switchTab.bind(this, "DISTANCES")} value="DISTANCES">Distances</a>
+              </li>
+              <li>
+                <a onClick={this.switchTab.bind(this, "BATCH_MODE")} value="BATCH_MODE">Batch mode</a>
+              </li>
+            </ul>
+          </Navigation>
+        </nav>
     );
   }
 }

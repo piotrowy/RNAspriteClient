@@ -21,11 +21,9 @@ const ErrorWrapper = styled.div`
 class Error extends React.Component {
   render() {
     return (
-      <main>
-        <ErrorWrapper>
-          <Title>404 Error</Title>
-        </ErrorWrapper>
-      </main>
+      <ErrorWrapper>
+        <Title>404 Error</Title>
+      </ErrorWrapper>
     );
   }
 }
