@@ -4,6 +4,7 @@ import Home from './Home'
 import DistancesConfiguration from '../containers/DistancesConfiguration'
 import TorsionAnglesConfiguration from '../containers/TorsionAnglesConfiguration'
 import MatrixView from '../containers/MatrixView'
+import Error from '../components/Error'
 import Input from '../containers/Input'
 import InputMode from '../containers/InputMode'
 
@@ -35,7 +36,7 @@ class Main extends React.Component {
         );
       case 'ERROR':
         return (
-          <div>ERROR</div>
+          <Error />
         );
       default:
         return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Checkbox, Button} from 'react-bootstrap';
+import {Button} from 'react-bootstrap';
 
 const angles = {
   "α": 'ALPHA',
@@ -69,7 +69,7 @@ class TorsionAnglesConfiguration extends React.Component {
           </select>
           <div id="checkboxes">
             {Object.keys(angles).map((e) => (
-              <Checkbox type="checkbox" name={angles[e]} value={angles[e]}> {e} </Checkbox>
+              <input type="checkbox" name={angles[e]} value={angles[e]}/>
               )
             )}
           </div>

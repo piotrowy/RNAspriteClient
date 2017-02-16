@@ -1,5 +1,7 @@
-.middle {
-  position:fixed;
-  top: 50%;
-  left: 50%;
+body {
+  margin: 0;
+}
+main {
+  height: 80vh;
+  overflow: scroll;
 }

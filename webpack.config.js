@@ -29,6 +29,13 @@ module.exports = {
           'css',
           'sass'
         ]
+      },
+      {
+        test: /\.(jpg|png)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[hash].[ext]',
+        }
       }
     ]
   },

@@ -146,11 +146,6 @@ const createDistancesMatrixChart = (container, title, matrix) => {
 
 
 const createTorsionAnglesMatrixChart = (container, title, matrix) => {
-  console.log(matrix['mtxModels'][0]['mtxChains'][0]['matrices'][0]['xlabels']);
-  console.log(parseResiduesLabels(matrix['mtxModels'][0]['mtxChains'][0]['matrices'][0]['ylabels']));
-  console.log(parseDistancesData(matrix['mtxModels'][0]['mtxChains'][0]['matrices'][0]['data']));
-  console.log(findMax(matrix['mtxModels'][0]['mtxChains'][0]['matrices'][0]['data']));
-  console.log(findMin(matrix['mtxModels'][0]['mtxChains'][0]['matrices'][0]['data']));
   Highcharts.chart(container, {
     chart: {
       type: 'heatmap',
@@ -158,7 +153,6 @@ const createTorsionAnglesMatrixChart = (container, title, matrix) => {
       marginBottom: 80,
       plotBorderWidth: 1
     },
-
 
     title: {
       text: title

@@ -5,8 +5,8 @@ export default connect(
   state => state.tabs,
   dispatch => ({
     setInputMode: (inputMode, tab) => {
-      dispatch({type:'SET_INPUT_MODE', inputMode: inputMode})
-      dispatch({type:'SWITCH_TAB', name: tab})
+      dispatch({type:'SET_INPUT_MODE', inputMode: inputMode});
+      dispatch({type:'SWITCH_TAB', name: tab});
     }
   })
 )(InputMode);
