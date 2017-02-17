@@ -1,5 +1,19 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
+import styled from 'styled-components';
+import RaisedButton from 'material-ui/RaisedButton';
+
+const InputWrapper = styled.div`
+  min-height: 88vh;
+  width: 100vh;
+  margin: auto;
+  vertical-align: middle;
+  align-items: center;
+  display: flex;
+`;
+
+const MyForm = styled.form`
+  margin: auto;
+`;
 
 class DistancesConfiguration extends React.Component {
   componentWillMount() {
@@ -39,39 +53,19 @@ class DistancesConfiguration extends React.Component {
 
   render() {
     return (
-      <main>
-        <form onSubmit={this.sendData.bind(this)}>
-          <select defaultValue="" id="modelSelect" onChange={this.getChains.bind(this)}>
-            <option value=""></option>
-            {this.props.session.models.map((e, i) => (
-                <option key={i} value={e}> {e} </option>
-              )
-            )}
-          </select>
-          <select defaultValue="" id="chainSelect" onChange={this.getAtoms.bind(this)}>
-            <option value=""></option>
-            {this.props.session.chains.map((e, i) => (
-                <option key={i} value={e}> {e} </option>
-              )
-            )}
-          </select>
-          <select defaultValue="" id="atomSelect1">
-            <option value=""></option>
-            {this.props.session.atoms.map((e, i) => (
-                <option key={i} value={e}> {e} </option>
-              )
-            )}
-          </select>
-          <select defaultValue="" id="atomSelect2">
-            <option value=""></option>
-            {this.props.session.atoms.map((e, i) => (
-                <option key={i} value={e}> {e} </option>
-              )
-            )}
-          </select>
-          <Button type="submit">Submit</Button>
-        </form>
-      </main>
+      <InputWrapper>
+        <MyForm onSubmit={this.sendData.bind(this)}>
+          <label for="modelSelect">Provide model number of a structure.</label>
+          <input type="text" id="modelSelect" required/>
+          <label for="chainSelect">Provide chain ID of a structure.</label>
+          <input type="text" id="chainSelect" required/>
+          <label for="atomSelect1">Provide atom1 ID of a structure.</label>
+          <input type="text" id="atomSelect1" required/>
+          <label for="atomSelect2">Provide atom2 ID of a structure.</label>
+          <input type="text" id="atomSelect2" required/>
+          <RaisedButton label="Submit" labelColor="#ffffff" backgroundColor="#00897b" type="submit"/>
+        </MyForm>
+      </InputWrapper>
     );
   }
 }

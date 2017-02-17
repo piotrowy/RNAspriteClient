@@ -20,7 +20,7 @@ export default connect(
         })
     },
     sendEmail: (id, email) => {
-      fetch(`/mail/send/${id}/${email}`)
+      fetch(`/email/send/${id}/${email}`)
         .then(res => res.json())
         .then(result => {
           dispatch({

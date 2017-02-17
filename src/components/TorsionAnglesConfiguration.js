@@ -1,7 +1,25 @@
 import React from 'react';
+import styled from 'styled-components';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
-import {Button} from 'react-materialize';
+import Checkbox from 'material-ui/Checkbox';
+import RaisedButton from 'material-ui/RaisedButton';
+
+const InputWrapper = styled.div`
+  min-height: 88vh;
+  width: 100vh;
+  margin: auto;
+  vertical-align: middle;
+  align-items: center;
+  display: flex;
+`;
+
+const MyForm = styled.form`
+  margin: auto;
+`;
+
+const MySelect = styled.select`
+`;
 
 const angles = {
   "α": 'ALPHA',
@@ -53,31 +71,22 @@ class TorsionAnglesConfiguration extends React.Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.sendData.bind(this)}>
-          <SelectField ref="dropdown" defaultValue="" id="modelSelect" onChange={this.getChains.bind(this)}>
-            <MenuItem value=""></MenuItem>
-            {this.props.session.models.map((e, i) => (
-                <MenuItem key={i} value={e}> {e} </MenuItem>
-              )
-            )}
-          </SelectField>
-          <SelectField defaultValue="" id="chainSelect">
-            <MenuItem value=""></MenuItem>
-            {this.props.session.chains.map((e, i) => (
-                <MenuItem key={i} value={e}> {e} </MenuItem>
-              )
-            )}
-          </SelectField>
+      <InputWrapper>
+        <MyForm onSubmit={this.sendData.bind(this)}>
+          <label for="modelSelect">Provide model number of a structure.</label>
+          <input type="text" id="modelSelect" required/>
+          <label for="chainSelect">Provide chain ID of a structure.</label>
+          <input type="text" id="chainSelect" required/>
+          <br/>
           <div id="checkboxes">
             {Object.keys(angles).map((e) => (
-                <input type="checkbox" name={angles[e]} value={angles[e]}/>
+                <Checkbox name={angles[e]} label={e}/>
               )
             )}
           </div>
-          <Button type="submit">Submit</Button>
-        </form>
-      </div>
+          <RaisedButton label="Submit" labelColor="#ffffff" backgroundColor="#00897b" type="submit"/>
+        </MyForm>
+      </InputWrapper>
     );
   }
 }

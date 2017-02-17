@@ -1,6 +1,6 @@
 import React from 'react';
 import Matrix from './../utils/Matrix';
-import { Button } from 'react-bootstrap';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class MatrixView extends React.Component {
 
@@ -18,9 +18,9 @@ class MatrixView extends React.Component {
       <div>
         <form onSubmit={this.send.bind(this)}>
           <input id="email" type="text" required/>
-          <Button type="submit">Send</Button>
+          <RaisedButton label="Submit" labelColor="#ffffff" backgroundColor="#00897b" type="submit"/>
         </form>
-        <Button onClick={this.download.bind(this)}>Download</Button>
+        <a href={'/matrix/csv/' + this.props.session.key} download="matrix">Download</a>
         <div id="heatMap"></div>
       </div>
     );
