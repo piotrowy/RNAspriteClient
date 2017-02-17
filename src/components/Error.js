@@ -4,16 +4,17 @@ import Background from './../figures/brokendna.png';
 
 const Title = styled.h1`
   margin: auto;
-  font-size: 6.5em;
+  font-size: 4.5em;
 `;
 
 const ErrorWrapper = styled.div`
   vertical-align: middle;
   align-items: center;
   display: flex;
-  height: inherit;
+  min-height: inherit;
+  margin: auto;
   background-image:url(${Background});
-  background-size:80vh;
+  background-size:88vh;
   background-position: center; 
   background-repeat: no-repeat;
 `;

@@ -1,4 +1,5 @@
 import React from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import MainNav from '../containers/NavContainer'
 import Main from './../containers/MainContainer'
@@ -9,6 +10,7 @@ class App extends React.Component {
 
   render() {
     return (
+      <MuiThemeProvider>
         <div>
           <Header />
           <main>
@@ -17,6 +19,7 @@ class App extends React.Component {
           </main>
           <Footer />
         </div>
+      </MuiThemeProvider>
     );
   }
 }

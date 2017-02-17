@@ -1,5 +1,7 @@
 import React from 'react';
-import {Button} from 'react-bootstrap';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
+import {Button} from 'react-materialize';
 
 const angles = {
   "α": 'ALPHA',
@@ -53,23 +55,23 @@ class TorsionAnglesConfiguration extends React.Component {
     return (
       <div>
         <form onSubmit={this.sendData.bind(this)}>
-          <select defaultValue="" id="modelSelect" onChange={this.getChains.bind(this)}>
-            <option value=""></option>
+          <SelectField ref="dropdown" defaultValue="" id="modelSelect" onChange={this.getChains.bind(this)}>
+            <MenuItem value=""></MenuItem>
             {this.props.session.models.map((e, i) => (
-                <option key={i} value={e}> {e} </option>
+                <MenuItem key={i} value={e}> {e} </MenuItem>
               )
             )}
-          </select>
-          <select defaultValue="" id="chainSelect">
-            <option value=""></option>
+          </SelectField>
+          <SelectField defaultValue="" id="chainSelect">
+            <MenuItem value=""></MenuItem>
             {this.props.session.chains.map((e, i) => (
-                <option key={i} value={e}> {e} </option>
+                <MenuItem key={i} value={e}> {e} </MenuItem>
               )
             )}
-          </select>
+          </SelectField>
           <div id="checkboxes">
             {Object.keys(angles).map((e) => (
-              <input type="checkbox" name={angles[e]} value={angles[e]}/>
+                <input type="checkbox" name={angles[e]} value={angles[e]}/>
               )
             )}
           </div>

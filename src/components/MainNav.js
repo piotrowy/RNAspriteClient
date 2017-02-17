@@ -31,10 +31,10 @@ class MainNav extends React.Component {
                 <a onClick={this.switchTab.bind(this, "HOME")} value="HOME">Home</a>
               </li>
               <li>
-                <a onClick={this.switchTab.bind(this, "TORSION_ANGLES")} value="TORSION_ANGLES">Torsion angles</a>
+                <a onClick={this.switchTab.bind(this, "TORSION_ANGLES")} value="TORSION_ANGLES">Torsion Angle Matrix</a>
               </li>
               <li>
-                <a onClick={this.switchTab.bind(this, "DISTANCES")} value="DISTANCES">Distances</a>
+                <a onClick={this.switchTab.bind(this, "DISTANCES")} value="DISTANCES">Atom Distances</a>
               </li>
               <li>
                 <a onClick={this.switchTab.bind(this, "BATCH_MODE")} value="BATCH_MODE">Batch mode</a>

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ButtonWrapper = styled.div`
-  height: inherit;
+  min-height: 88vh;
   vertical-align: middle;
   align-items: center;
   display: flex;
